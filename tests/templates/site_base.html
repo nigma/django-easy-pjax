@@ -1,0 +1,9 @@
+{% extends "base.html"|pjax:request %}
+
+{% block title %}Hello{% endblock %}
+
+{% block content %}
+    <h1>Hi There!</h1>
+
+    <a href="{{ request.get_full_path|unpjax }}">This Page</a>
+{% endblock %}
