@@ -23,11 +23,12 @@ Include ``django-easy-pjax`` in your requirements file, add ``easy_pjax``
 to your ``INSTALLED APPS`` and make sure that you have the 
 ``django.core.context_processors.request`` added to ``TEMPLATE_CONTEXT_PROCESSORS``.
 
-Then simply add ``|pjax:request`` to your site template ``extends`` tag::
+Then simply add ``|pjax:request`` filter inside your site template
+``extends`` tag::
 
    {% extends "theme_base.html"|pjax:request %}
 
-The ``pjax`` filter will decide which template should be extended based
+The ``pjax`` filter will decide which layout template should be extended based
 on HTTP headers. In the example above it will return ``theme_base.html``
 for regular requests and ``pjax_base.html`` for PJAX requests.
 
@@ -41,7 +42,7 @@ so integration with other applications shouldn't be a problem.
 The template filter also takes a comma-separated names of `base` and `pjax`
 templates as the first parameter::
 
-    {% extends "base.html,pjax_base.html"|pjax:request %}
+    {% extends "base.html,pjax_base2.html"|pjax:request %}
 
 This is useful if you need to specify another template set.
 
