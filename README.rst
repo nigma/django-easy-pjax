@@ -19,7 +19,7 @@ and a working back button that fully degrades.
 in practice and take a look at docs of `jquery-pjax`_ to get more information.
 
 The `django-easy-pjax` app is a helper that makes it trivial to integrate
-`jquery-pjax` with your Django site.
+`jquery-pjax` with your Django 1.4+ site.
 
 Quick Start
 -----------
