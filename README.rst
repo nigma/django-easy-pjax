@@ -3,6 +3,11 @@ Easy PJAX for Django
 
 Enhance the browsing experience of Django sites.
 
+.. image::
+    https://secure.travis-ci.org/nigma/django-easy-pjax.png?branch=master
+    :alt: Build Status
+    :target: https://secure.travis-ci.org/nigma/django-easy-pjax
+
 What is PJAX?
 -------------
 
@@ -67,8 +72,8 @@ License
 Other Resources
 ---------------
 
-GitHub repository - https://github.com/nigma/django-easy-pjax
-PyPi Package - http://pypi.python.org/pypi/django-easy-pjax
+- GitHub repository - https://github.com/nigma/django-easy-pjax
+- PyPi Package site - http://pypi.python.org/pypi/django-easy-pjax
 
 Please note that the `jquery-pjax`_ JavaScript library in not bundled with this
 app and you still need to add proper handling to your browser-side code.
