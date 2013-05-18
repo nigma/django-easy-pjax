@@ -2,7 +2,7 @@
 
 from setuptools import setup
 
-version = "1.0"
+version = "1.0.post1"
 
 setup(
     name = "django-easy-pjax",
