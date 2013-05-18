@@ -3,9 +3,12 @@ language: python
 python:
   - "2.6"
   - "2.7"
+  - "3.2"
+  - "3.3"
 
 env:
   - DJANGO_VERSION=1.4
+  - DJANGO_VERSION=1.5
 
 before_install:
   - export PIP_USE_MIRRORS=true
@@ -15,7 +18,3 @@ install:
   - pip install -e .
 
 script: python run_tests.py
-
-matrix:
-  allow_failures:
-    - python: "2.6"
