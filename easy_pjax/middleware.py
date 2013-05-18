@@ -2,6 +2,7 @@
 
 from django.http import QueryDict
 
+
 class UnpjaxMiddleware(object):
     """
     Removes the `_pjax` parameter from query string
