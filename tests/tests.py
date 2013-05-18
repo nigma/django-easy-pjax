@@ -33,13 +33,6 @@ class UnpjaxMiddlewareTestCase(TestCase):
             content = response.content.decode(response._charset)
             self.assertHTMLEqual('<a href="/unpjax/?param=1"></a>', content)
 
-            # _pjax_ is not _pjax, should stay
-            response = self.client.get("/unpjax/?param=1&_pjax_=true",
-                HTTP_X_PJAX=True)
-            content = response.content.decode(response._charset)
-            self.assertHTMLEqual('<a href="/unpjax/?param=1&_pjax_=true"></a>',
-                                 content)
-
 
 class UnpjaxFilterTestCase(TestCase):
     def test_regular_request(self):
@@ -54,13 +47,6 @@ class UnpjaxFilterTestCase(TestCase):
         content = response.content.decode(response._charset)
         self.assertHTMLEqual('<a href="/unpjax-filter/?param=1"></a>',
                              content)
-
-        # _pjax_ is not _pjax, should stay
-        response = self.client.get("/unpjax-filter/?param=1&_pjax_=true",
-            HTTP_X_PJAX=True)
-        content = response.content.decode(response._charset)
-        self.assertHTMLEqual(
-            '<a href="/unpjax-filter/?param=1&_pjax_=true"></a>', content)
 
 
 class TemplateFilterChoiceTestCase(TestCase):
