@@ -3,7 +3,11 @@
 from django import template
 from django.http import QueryDict
 
+# Note: this file is automatically added to Django template builtins
+# by the easy_pjax.__init__ module.
+
 register = template.Library()
+
 
 @register.filter_function
 def pjax(template_names, request, default="pjax_base.html"):

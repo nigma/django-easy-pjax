@@ -69,20 +69,20 @@ class TemplateFilterChoiceTestCase(TestCase):
         return self.rf.get(self.pjax_url, HTTP_X_PJAX=True)
 
     def test_template_choice_filter_with_request(self):
-        from easy_pjax.pjax_tags import pjax
+        from easy_pjax.templatetags.pjax_tags import pjax
 
         assert pjax("base.html", self.build_pjax_request()) == "pjax_base.html"
         assert pjax("base.html", self.build_regular_request()) == "base.html"
 
     def test_template_choice_filter_with_template_params(self):
-        from easy_pjax.pjax_tags import pjax
+        from easy_pjax.templatetags.pjax_tags import pjax
 
         assert pjax("base.html,other_pjax.html",
             self.build_pjax_request()) == "other_pjax.html"
         assert pjax("base.html", self.build_regular_request()) == "base.html"
 
     def test_template_choice_filter_with_flag(self):
-        from easy_pjax.pjax_tags import pjax
+        from easy_pjax.templatetags.pjax_tags import pjax
 
         assert pjax("base.html", True) == "pjax_base.html"
         assert pjax("base.html", False) == "base.html"
