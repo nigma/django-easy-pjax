@@ -30,14 +30,15 @@ def pjax(template_names, request, default="pjax_base.html"):
         is_pjax = request
     else:
         is_pjax = request.META.get("HTTP_X_PJAX", False)
-
-    parts = [name.strip() for name in template_names.split(",")]
-    template_name = parts[0]
-    pjax_template_name = parts[1] if len(parts) == 2 else default
+    
+    if ',' in template_names:
+        template_name, pjax_template_name = template_names.split(',', 1)
+    else:
+        template_name, pjax_template_name = template_names, default
 
     if is_pjax:
-        return pjax_template_name
-    return template_name
+        return pjax_template_name.strip() or default
+    return template_name.strip()
 
 
 @register.filter_function
