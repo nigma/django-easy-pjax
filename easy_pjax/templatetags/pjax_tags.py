@@ -34,8 +34,8 @@ def pjax(template_names, request, default="pjax_base.html"):
     template_name, pjax_template_name = template_names.split(',', 1)
 
     if is_pjax:
-        return pjax_template_name or default
-    return template_name
+        return pjax_template_name.strip() or default
+    return template_name.strip()
 
 
 @register.filter_function
