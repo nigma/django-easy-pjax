@@ -90,17 +90,17 @@ class SimpleTemplateChoiceTestCase(TestCase):
         resp = self.client.get(self.regular_url)
         self.assertTemplateUsed(resp, "base.html")
         self.assertTemplateNotUsed(resp, "pjax_base.html")
-        self.assertIn(b"<div>Sample page structure</div>", resp.content)
-        self.assertIn(b"<title>Hello</title>", resp.content)
-        self.assertIn(b"<h1>Hi There!</h1>", resp.content)
+        self.assertContains(resp, "<div>Sample page structure</div>")
+        self.assertContains(resp, "<title>Hello</title>")
+        self.assertContains(resp, "<h1>Hi There!</h1>")
 
     def test_pjax_request(self):
         resp = self.client.get(self.pjax_url, HTTP_X_PJAX=True)
         self.assertTemplateNotUsed(resp, "base.html")
         self.assertTemplateUsed(resp, "pjax_base.html")
-        self.assertNotIn(b"<div>Sample page structure</div>", resp.content)
-        self.assertIn(b"<title>Hello</title>", resp.content)
-        self.assertIn(b"<h1>Hi There!</h1>", resp.content)
+        self.assertNotContains(resp, "<div>Sample page structure</div>")
+        self.assertContains(resp, "<title>Hello</title>")
+        self.assertContains(resp, "<h1>Hi There!</h1>")
 
 
 class TupleTemplateChoiceTestCase(SimpleTemplateChoiceTestCase):
