@@ -1,0 +1,6 @@
+django>=1.5.1
+
+
+# This is not a project requirement
+# Only used for demo on http://easy-pjax.herokuapp.com
+waitress>=0.8.8
