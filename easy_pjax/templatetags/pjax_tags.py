@@ -31,8 +31,8 @@ def pjax(template_names, request, default="pjax_base.html"):
     else:
         is_pjax = request.META.get("HTTP_X_PJAX", False)
     
-    if ',' in template_names:
-        template_name, pjax_template_name = template_names.split(',', 1)
+    if "," in template_names:
+        template_name, pjax_template_name = template_names.split(",", 1)
     else:
         template_name, pjax_template_name = template_names, default
 
