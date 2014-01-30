@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django Easy Pjax test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+
+    <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url "index" %}">easy-pjax</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{% url "page-1" %}"><span class="glyphicon glyphicon-star"></span> Page 1</a></li>
+                <li><a href="{% url "page-2" %}"><span class="glyphicon glyphicon-fire"></span> Page 2</a></li>
+            </ul>
+            <p class="checkbox navbar-text" data-toggle="tooltip" data-placement="bottom" title="Turn PJAX loading on/off">
+                <label>
+                    <input type="checkbox" checked="checked"> Use PJAX
+                </label>
+            </p>
+            <p class="navbar-text hidden" id="loading"><span class="glyphicon glyphicon-refresh"></span> Loading..</p>
+            <p class="navbar-text navbar-right"><span class="label label-warning" style="font-weight: bold; font-size: 120%;">Page rendered at {{ today|time:"G:i:s" }}</span></p>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12" id="pjax-container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="//code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{% static "jquery.pjax.js" %}"></script>
+<script type="text/javascript" src="{% static "script.js" %}"></script>
+</body>
+</html>
