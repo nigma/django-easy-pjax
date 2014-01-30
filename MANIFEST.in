@@ -3,4 +3,4 @@ include CONTRIBUTING.rst
 include HISTORY.rst
 include LICENSE
 include README.rst
-recursive-include easy_pjax *.html *.png *.gif *js *jpg *jpeg *svg *py
+recursive-include easy_pjax *.html *.png *.gif *jpg *jpeg *svg *py
