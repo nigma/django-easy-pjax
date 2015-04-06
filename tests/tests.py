@@ -10,11 +10,16 @@ from django.test.client import RequestFactory, Client
 class UnpjaxMiddlewareTestCase(TestCase):
     def test_without_middleware(self):
         response = self.client.get("/unpjax/?param=1")
-        content = response.content.decode(response._charset)
+        charset = response._charset
+
+        if charset is None:
+            charset = 'UTF-8'
+
+        content = response.content.decode(charset)
         self.assertHTMLEqual('<a href="/unpjax/?param=1"></a>', content)
 
         response = self.client.get("/unpjax/?param=1&_pjax=true", HTTP_X_PJAX=True)
-        content = response.content.decode(response._charset)
+        content = response.content.decode(charset)
         self.assertHTMLEqual('<a href="/unpjax/?param=1&_pjax=true"></a>',
                              content)
 
@@ -26,25 +31,40 @@ class UnpjaxMiddlewareTestCase(TestCase):
             client = Client()
 
             response = client.get("/unpjax/?param=1")
-            content = response.content.decode(response._charset)
+            charset = response._charset
+
+            if charset is None:
+                charset = 'UTF-8'
+
+            content = response.content.decode(charset)
             self.assertHTMLEqual('<a href="/unpjax/?param=1"></a>', content)
 
             response = client.get("/unpjax/?param=1&_pjax=true", HTTP_X_PJAX=True)
-            content = response.content.decode(response._charset)
+            content = response.content.decode(charset)
             self.assertHTMLEqual('<a href="/unpjax/?param=1"></a>', content)
 
 
 class UnpjaxFilterTestCase(TestCase):
     def test_regular_request(self):
         response = self.client.get("/unpjax-filter/?param=1")
-        content = response.content.decode(response._charset)
+        charset = response._charset
+
+        if charset is None:
+            charset = 'UTF-8'
+
+        content = response.content.decode(charset)
         self.assertHTMLEqual('<a href="/unpjax-filter/?param=1"></a>',
                              content)
 
     def test_pjax_request(self):
         response = self.client.get("/unpjax-filter/?param=1&_pjax=true",
             HTTP_X_PJAX=True)
-        content = response.content.decode(response._charset)
+        charset = response._charset
+
+        if charset is None:
+            charset = 'UTF-8'
+
+        content = response.content.decode(charset)
         self.assertHTMLEqual('<a href="/unpjax-filter/?param=1"></a>',
                              content)
 
