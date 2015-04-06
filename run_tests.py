@@ -37,7 +37,7 @@ from django.test.utils import get_runner
 
 
 def run_tests(verbosity, interactive, failfast, test_labels):
-    if django.get_version() >= '1.7.0':
+    if django.get_version() >= '1.7':
         # Django 1.7 changed how apps are loaded so this call is necessary to
         # configure some settings
         django.setup()
