@@ -29,7 +29,7 @@ PJAX utilizes pushState and Ajax to load HTML from the server into the current
 page without a full reload. It's Ajax with real permalinks, page titles,
 and a working back button that fully degrades.
 
-`Check ou the demo <http://easy-pjax.heroku.com/>`_ that illustrates this concept
+`Check out the demo <http://easy-pjax.herokuapp.com/>`_ that illustrates this concept
 in practice and take a look at docs of `jquery-pjax`_ to get more information.
 
 The `django-easy-pjax` app is a helper that makes it trivial to integrate
