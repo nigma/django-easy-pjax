@@ -4,6 +4,7 @@ import os
 import sys
 from optparse import OptionParser
 
+import django
 from django.conf import settings, global_settings
 
 
@@ -36,6 +37,11 @@ from django.test.utils import get_runner
 
 
 def run_tests(verbosity, interactive, failfast, test_labels):
+    if django.get_version() >= '1.7':
+        # Django 1.7 changed how apps are loaded so this call is necessary to
+        # configure some settings
+        django.setup()
+
     if not test_labels:
         test_labels = ["tests"]
 
