@@ -11,3 +11,5 @@ Contributors
 ------------
 
 * Kacper Krupa (@pagenoare)
+* Scott Woodall (@scottwoodall)
+* Jan Malte Gerth (@JanMalte)
