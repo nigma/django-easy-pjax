@@ -42,6 +42,24 @@ Include ``django-easy-pjax`` in your requirements file, add ``easy_pjax``
 to your ``INSTALLED APPS`` and make sure that you have the 
 ``django.core.context_processors.request`` added to ``TEMPLATE_CONTEXT_PROCESSORS``.
 
+For Django 1.9+ you also need to add ``"easy_pjax.templatetags.pjax_tags"`` to your
+template builtins, e.g. like this if you don't have any other builtins::
+
+   TEMPLATES = [
+       {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            ...,
+            'OPTIONS': {
+                'context_processors': [
+                    ...,
+                    'django.template.context_processors.request',
+                    ...,
+                ],
+                'builtins': ["easy_pjax.templatetags.pjax_tags"],
+           },
+       },
+   ]
+
 Then simply add ``|pjax:request`` filter inside your site template
 ``extends`` tag::
 

@@ -14,7 +14,12 @@ __version__ = "1.2.0"
 try:
     from django.template import add_to_builtins
 except ImportError:
-    # import path changed in 1.8
-    from django.template.base import add_to_builtins
+    try:
+        # import path changed in 1.8
+        from django.template.base import add_to_builtins
+    except ImportError:
+        # No more add_to_builtins in 1.9+
+        pass
 
-add_to_builtins("easy_pjax.templatetags.pjax_tags")
+if "add_to_builtins" in vars():
+    add_to_builtins("easy_pjax.templatetags.pjax_tags")
