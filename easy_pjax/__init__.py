@@ -7,6 +7,7 @@ an option).
 """
 
 from __future__ import absolute_import, division, print_function, unicode_literals
+from django.conf import settings
 
 __version__ = "1.2.0"
 
@@ -23,3 +24,8 @@ except ImportError:
 
 if "add_to_builtins" in vars():
     add_to_builtins("easy_pjax.templatetags.pjax_tags")
+else:  # Add us to builtins the django 1.9+ way
+    try:
+        settings.TEMPLATES[0]['OPTIONS']['builtins'].append("easy_pjax.templatetags.pjax_tags")
+    except KeyError:  # No builtins defined yet
+        settings.TEMPLATES[0]['OPTIONS'].update({'builtins': ["easy_pjax.templatetags.pjax_tags"]})
