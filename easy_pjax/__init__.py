@@ -25,7 +25,14 @@ except ImportError:
 if "add_to_builtins" in vars():
     add_to_builtins("easy_pjax.templatetags.pjax_tags")
 else:  # Add us to builtins the django 1.9+ way
-    try:
-        settings.TEMPLATES[0]['OPTIONS']['builtins'].append("easy_pjax.templatetags.pjax_tags")
-    except KeyError:  # No builtins defined yet
-        settings.TEMPLATES[0]['OPTIONS'].update({'builtins': ["easy_pjax.templatetags.pjax_tags"]})
+    for engine in settings.TEMPLATES:
+        # Only modify django templates
+        if engine['BACKEND'] == 'django.template.backends.django.DjangoTemplates':
+            # Create OPTIONS and OPTIONS.builtins if they are not here yet
+            if 'OPTIONS' not in engine:
+                engine['OPTIONS'] = {}
+            if 'builtins' not in engine['OPTIONS']:
+                engine['OPTIONS']['builtins'] = []
+            # Do not add us if we are already in builtins
+            if "easy_pjax.templatetags.pjax_tags" not in engine['OPTIONS']['builtins']:
+                engine['OPTIONS']['builtins'].append("easy_pjax.templatetags.pjax_tags")
