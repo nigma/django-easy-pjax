@@ -6,6 +6,7 @@ python:
   - "3.2"
   - "3.3"
   - "3.4"
+  - "3.5"
 
 env:
   - DJANGO_VERSION=">=1.4,<1.5"
@@ -17,6 +18,11 @@ env:
   - DJANGO_VERSION=">=1.7,<1.8"
   - DJANGO_VERSION="==1.8"
   - DJANGO_VERSION=">=1.8,<1.9"
+  - DJANGO_VERSION="==1.9"
+  - DJANGO_VERSION=">=1.9,<1.10"
+
+# https://docs.djangoproject.com/en/1.9/releases/1.8/#python-compatibility
+# https://docs.djangoproject.com/en/1.9/releases/1.9/#python-compatibility
 
 matrix:
   exclude:
@@ -28,11 +34,31 @@ matrix:
       env: DJANGO_VERSION="==1.8"
     - python: "2.6"
       env: DJANGO_VERSION=">=1.8,<1.9"
+    - python: "2.6"
+      env: DJANGO_VERSION="==1.9"
+    - python: "2.6"
+      env: DJANGO_VERSION=">=1.9,<1.10"
+
     - python: "3.2"
       env: DJANGO_VERSION=">=1.4,<1.5"
+    - python: "3.2"
+      env: DJANGO_VERSION="==1.9"
+    - python: "3.2"
+      env: DJANGO_VERSION=">=1.9,<1.10"
+
+
     - python: "3.3"
       env: DJANGO_VERSION=">=1.4,<1.5"
+    - python: "3.3"
+      env: DJANGO_VERSION="==1.9"
+    - python: "3.3"
+      env: DJANGO_VERSION=">=1.9,<1.10"
+
+
     - python: "3.4"
+      env: DJANGO_VERSION=">=1.4,<1.5"
+
+    - python: "3.5"
       env: DJANGO_VERSION=">=1.4,<1.5"
 
 install:
