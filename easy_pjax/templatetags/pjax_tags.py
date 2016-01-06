@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from __future__ import absolute_import, division, print_function, unicode_literals
 
@@ -32,7 +32,7 @@ def pjax(template_names, request, default="pjax_base.html"):
         is_pjax = request
     else:
         is_pjax = request.META.get("HTTP_X_PJAX", False)
-    
+
     if "," in template_names:
         template_name, pjax_template_name = template_names.split(",", 1)
     else:

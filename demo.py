@@ -1,5 +1,5 @@
 #!/bin/env python
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 Demo script. Run:
@@ -43,9 +43,10 @@ if not settings.configured:
             "easy_pjax.middleware.UnpjaxMiddleware"
         ],
         TEMPLATE_DIRS=[rel("tests", "templates", "demo")],
-        TEMPLATE_CONTEXT_PROCESSORS=
-            global_settings.TEMPLATE_CONTEXT_PROCESSORS +
-            ("django.core.context_processors.request",),
+        TEMPLATE_CONTEXT_PROCESSORS=(
+            list(global_settings.TEMPLATE_CONTEXT_PROCESSORS) +
+            ["django.core.context_processors.request"]
+        ),
         STATICFILES_DIRS=[rel("tests", "static")],
         STATIC_ROOT=rel("tests", "static"),
         STATICFILES_FINDERS=[
@@ -71,7 +72,8 @@ class HelloView(TemplateView):
             **kwargs
         )
 
-urlpatterns = patterns("",
+urlpatterns = patterns(
+    "",
     url(r"^$", HelloView.as_view(), name="index"),
     url(r"^page-1$", HelloView.as_view(page_name="Page 1"), name="page-1"),
     url(r"^page-2$", HelloView.as_view(page_name="Page 2"), name="page-2"),

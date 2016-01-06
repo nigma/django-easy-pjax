@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import os
 import sys
@@ -27,9 +27,10 @@ if not settings.configured or not os.environ.get("DJANGO_SETTINGS_MODULE"):
             "easy_pjax",
             "tests",
         ],
-        TEMPLATE_CONTEXT_PROCESSORS=
-        global_settings.TEMPLATE_CONTEXT_PROCESSORS +
-        ("django.core.context_processors.request",),
+        TEMPLATE_CONTEXT_PROCESSORS=(
+            list(global_settings.TEMPLATE_CONTEXT_PROCESSORS) +
+            ["django.core.context_processors.request"]
+        ),
         ROOT_URLCONF="tests.urls",
     )
 
@@ -37,7 +38,7 @@ from django.test.utils import get_runner
 
 
 def run_tests(verbosity, interactive, failfast, test_labels):
-    if django.get_version() >= '1.7':
+    if django.get_version() >= "1.7":
         # Django 1.7 changed how apps are loaded so this call is necessary to
         # configure some settings
         django.setup()
