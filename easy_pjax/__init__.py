@@ -10,7 +10,6 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 __version__ = "1.2.0"
 
-has_add_to_builtins = True
 try:
     from django.template import add_to_builtins
 except ImportError:
@@ -18,7 +17,7 @@ except ImportError:
         # import path changed in 1.8
         from django.template.base import add_to_builtins
     except ImportError:
-        has_add_to_builtins = False
+        add_to_builtins = None
 
-if has_add_to_builtins:
+if add_to_builtins is not None:
     add_to_builtins("easy_pjax.templatetags.pjax_tags")
