@@ -1,4 +1,4 @@
-.PHONY: flake8 demo test coverage
+.PHONY: flake8 demo test coverage dist publish
 
 flake8:
 	flake8
@@ -20,3 +20,12 @@ coverage:
 		`which django-admin` test tests
 	coverage report -m
 	coverage html
+
+dist:
+	python setup.py sdist bdist_wheel
+
+publish:
+	python setup.py sdist bdist_wheel upload
+	# You probably want to also tag the version now:
+	#   git tag -a <version> -m 'version <version>'
+	#   git push --tags
