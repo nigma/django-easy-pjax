@@ -52,9 +52,16 @@ setup(
         "Programming Language :: Python :: 3.2",
         "Programming Language :: Python :: 3.3",
         "Programming Language :: Python :: 3.4",
-        "Topic :: Software Development :: Libraries :: Python Modules"
+        "Programming Language :: Python :: 3.5",
+        "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+        "Topic :: Software Development",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Framework :: Django",
+        "Framework :: Django :: 1.8",
+        "Framework :: Django :: 1.9"
     ],
     tests_require=[
         "django>=1.5",
     ],
+    test_suite=""
 )
