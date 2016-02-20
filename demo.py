@@ -6,7 +6,7 @@ Demo script. Run:
 
 python.exe demo.py
 
-Note: this demo requires Django 1.8 or higher
+Note: this demo requires Django 1.9 or higher
 """
 
 from __future__ import absolute_import, division, print_function, unicode_literals

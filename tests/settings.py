@@ -18,13 +18,23 @@ MIDDLEWARE_CLASSES = []
 ROOT_URLCONF = "tests.urls"
 SECRET_KEY = "secret"
 
-if django.VERSION[:2] >= (1, 8):
+if django.VERSION[:2] >= (1, 9):
     TEMPLATES = [
         {
             "BACKEND": "django.template.backends.django.DjangoTemplates",
             "APP_DIRS": True,
             "OPTIONS": {
                 "builtins": ["easy_pjax.templatetags.pjax_tags"],
+                "context_processors": ["django.template.context_processors.request"]
+            }
+        }
+    ]
+elif django.VERSION[:2] == (1, 8):
+    TEMPLATES = [
+        {
+            "BACKEND": "django.template.backends.django.DjangoTemplates",
+            "APP_DIRS": True,
+            "OPTIONS": {
                 "context_processors": ["django.template.context_processors.request"]
             }
         }
