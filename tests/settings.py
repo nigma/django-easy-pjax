@@ -21,11 +21,11 @@ SECRET_KEY = "secret"
 if django.VERSION[:2] >= (1, 8):
     TEMPLATES = [
         {
-            'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'APP_DIRS': True,
-            'OPTIONS': {
-                'builtins': ["easy_pjax.templatetags.pjax_tags"],
-                'context_processors': ["django.template.context_processors.request"]
+            "BACKEND": "django.template.backends.django.DjangoTemplates",
+            "APP_DIRS": True,
+            "OPTIONS": {
+                "builtins": ["easy_pjax.templatetags.pjax_tags"],
+                "context_processors": ["django.template.context_processors.request"]
             }
         }
     ]
