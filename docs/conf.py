@@ -285,7 +285,7 @@ texinfo_documents = [
 intersphinx_mapping = {
     'python': ('http://docs.python.org/', None),
     'sphinx': ('http://sphinx-doc.org/', None),
-    'django': ('http://docs.djangoproject.com/en/1.6/', 'http://docs.djangoproject.com/en/1.6/_objects/'),
+    'django': ('http://docs.djangoproject.com/en/1.9/', 'http://docs.djangoproject.com/en/1.9/_objects/'),
 }
 
 # Python's docs don't change every week.
