@@ -8,7 +8,7 @@ an option).
 
 from __future__ import absolute_import, division, print_function, unicode_literals
 
-__version__ = "1.2.0"
+__version__ = "1.3.0"
 
 try:
     from django.template import add_to_builtins
