@@ -75,6 +75,9 @@ matrix:
 
 install:
   - pip install Django$DJANGO_VERSION
+  - pip install flake8
   - pip install -e .
 
-script: make test
+script:
+  - make flake8
+  - make test
