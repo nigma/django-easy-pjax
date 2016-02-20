@@ -3,22 +3,21 @@ Easy PJAX for Django
 
 Enhance the browsing experience of Django sites.
 
-.. image:: https://pypip.in/v/django-easy-pjax/badge.png
+.. image:: https://secure.travis-ci.org/nigma/django-easy-pjax.svg?branch=master
+    :target: https://secure.travis-ci.org/nigma/django-easy-pjax
+    :alt: Build Status
+.. image:: https://img.shields.io/pypi/v/django-cms.svg
     :target: https://pypi.python.org/pypi/django-easy-pjax/
     :alt: Latest Version
-
-.. image:: https://pypip.in/d/django-easy-pjax/badge.png
+.. image:: https://img.shields.io/pypi/dm/django-cms.svg
     :target: https://pypi.python.org/pypi/django-easy-pjax/
     :alt: Downloads
-
-.. image:: https://pypip.in/license/django-easy-pjax/badge.png
+.. image:: https://img.shields.io/badge/wheel-yes-green.svg
+    :target: https://pypi.python.org/pypi/django-easy-pjax/
+    :alt: Wheel
+.. image:: https://img.shields.io/pypi/l/django-cms.svg
     :target: https://pypi.python.org/pypi/django-easy-pjax/
     :alt: License
-
-.. image::
-    https://secure.travis-ci.org/nigma/django-easy-pjax.png?branch=master
-    :alt: Build Status
-    :target: https://secure.travis-ci.org/nigma/django-easy-pjax
 
 Developed at `en.ig.ma software shop <http://en.ig.ma>`_.
 
