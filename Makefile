@@ -1,9 +1,9 @@
-.PHONY: flake8 test coverage
+.PHONY: flake8 demo test coverage
 
 flake8:
 	flake8
 
-example:
+demo:
 	python demo.py
 
 test:
