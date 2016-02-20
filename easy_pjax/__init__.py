@@ -21,3 +21,5 @@ except ImportError:
 
 if add_to_builtins is not None:
     add_to_builtins("easy_pjax.templatetags.pjax_tags")
+
+default_app_config = "easy_pjax.apps.EasyPJAXConfig"

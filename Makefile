@@ -16,5 +16,7 @@ test:
 
 coverage:
 	coverage erase
-	coverage run --branch --source=easy_pjax python run_tests.py
+	PYTHONPATH=. DJANGO_SETTINGS_MODULE=tests.settings coverage run --source=easy_pjax \
+		`which django-admin` test tests
+	coverage report -m
 	coverage html
