@@ -32,18 +32,39 @@ and a working back button that fully degrades.
 `Check out the demo <http://easy-pjax.herokuapp.com/>`_ that illustrates this concept
 in practice and take a look at docs of `jquery-pjax`_ to get more information.
 
-The `django-easy-pjax` app is a helper that makes it trivial to integrate
-`jquery-pjax` with your Django 1.5+ site.
+The ``django-easy-pjax`` app is a helper that makes it easy to integrate
+``jquery-pjax`` with your Django 1.5+ site.
 
 Quick Start
 -----------
 
-Include ``django-easy-pjax`` in your requirements file, add ``easy_pjax``
-to your ``INSTALLED APPS`` and make sure that you have the 
-``django.core.context_processors.request`` added to ``TEMPLATE_CONTEXT_PROCESSORS``.
+(Note: the following instructions are for Django 1.8+)
 
-Then simply add ``|pjax:request`` filter inside your site template
-``extends`` tag::
+First include ``django-easy-pjax==1.3`` in your ``requirements.txt`` file,
+add ``easy_pjax`` to your ``INSTALLED APPS``.
+Then make sure that you have ``easy_pjax.templatetags.pjax_tags`` added to ``builtins``
+and ``django.template.context_processors.request`` added to ``context_processors``
+in your Django templates settings::
+
+    TEMPLATES=[
+        {
+            "BACKEND": "django.template.backends.django.DjangoTemplates",
+            "DIRS": [...],
+            "APP_DIRS": True,
+            "OPTIONS": {
+                "builtins": [
+                    "easy_pjax.templatetags.pjax_tags"
+                ],
+                "context_processors": [
+                    "django.template.context_processors.request",
+                    "django.template.context_processors.static",
+                    ...
+                ]
+            }
+        }
+    ]
+
+Then simply add ``|pjax:request`` filter inside your site template ``extends`` tag::
 
    {% extends "theme_base.html"|pjax:request %}
 
@@ -65,10 +86,12 @@ templates as the first parameter::
 
 This is useful if you need to specify another template set.
 
+See the ``demo.py`` file and ``tests`` directory for working examples.
+
 Unpjax
 ------
 
-`jquery-pjax` uses cache-busting techniques and appends ``_pjax=true``
+``jquery-pjax`` uses cache-busting techniques and appends ``_pjax=true``
 to query string params.
 
 If for some reason you need to remove that param from query strings
@@ -90,7 +113,7 @@ script from the cloned repository.
 License
 -------
 
-`django-easy-pjax` is released under the BSD license.
+``django-easy-pjax`` is released under the BSD license.
 
 Other Resources
 ---------------
