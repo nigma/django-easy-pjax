@@ -5,6 +5,8 @@
 Demo script. Run:
 
 python.exe demo.py
+
+Note: this demo requires Django 1.8 or higher
 """
 
 from __future__ import absolute_import, division, print_function, unicode_literals
@@ -32,7 +34,6 @@ def rel(*path):
 if not settings.configured:
     settings.configure(
         DEBUG=True,
-        TEMPLATE_DEBUG=True,
         TIMEZONE="UTC",
         DATABASES={},
         INSTALLED_APPS=[
@@ -42,22 +43,33 @@ if not settings.configured:
         MIDDLEWARE_CLASSES=[
             "easy_pjax.middleware.UnpjaxMiddleware"
         ],
-        TEMPLATE_DIRS=[rel("tests", "templates", "demo")],
-        TEMPLATE_CONTEXT_PROCESSORS=(
-            list(global_settings.TEMPLATE_CONTEXT_PROCESSORS) +
-            ["django.core.context_processors.request"]
-        ),
         STATICFILES_DIRS=[rel("tests", "static")],
-        STATIC_ROOT=rel("tests", "static"),
+        STATIC_ROOT=rel("tests", "static-root"),
         STATICFILES_FINDERS=[
             "django.contrib.staticfiles.finders.FileSystemFinder",
             "django.contrib.staticfiles.finders.AppDirectoriesFinder",
         ],
         STATIC_URL="/static/",
+        TEMPLATES=[
+            {
+                "BACKEND": "django.template.backends.django.DjangoTemplates",
+                "DIRS": [rel("tests", "templates", "demo")],
+                "APP_DIRS": True,
+                "OPTIONS": {
+                    "builtins": ["easy_pjax.templatetags.pjax_tags"],
+                    "context_processors": [
+                        "django.template.context_processors.static",
+                        "django.template.context_processors.request"
+                    ]
+                }
+            }
+        ],
         ROOT_URLCONF=basename,
         WSGI_APPLICATION="{}.application".format(basename),
     )
 
+
+from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
 
@@ -72,14 +84,11 @@ class HelloView(TemplateView):
             **kwargs
         )
 
-urlpatterns = patterns(
-    "",
+urlpatterns = [
     url(r"^$", HelloView.as_view(), name="index"),
     url(r"^page-1$", HelloView.as_view(page_name="Page 1"), name="page-1"),
     url(r"^page-2$", HelloView.as_view(page_name="Page 2"), name="page-2"),
-    url(r"^%s(?P<path>.*)$" % re.escape(settings.STATIC_URL.lstrip("/")),
-        "django.views.static.serve", kwargs=dict(document_root=settings.STATIC_ROOT))
-)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 application = get_wsgi_application()
 
