@@ -13,12 +13,11 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 import logging
 import os
-import re
 
 logging.basicConfig()
 
-from django.conf import settings, global_settings
-from django.conf.urls import patterns, url
+from django.conf import settings
+from django.conf.urls import url
 from django.core.wsgi import get_wsgi_application
 from django.utils.timezone import now as tznow
 
