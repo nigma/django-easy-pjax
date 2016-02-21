@@ -25,7 +25,8 @@ class UnpjaxMiddlewareTestCase(TestCase):
 
         response = self.client.get("/unpjax/?{0}&_pjax=true".format(self.param_encoded), HTTP_X_PJAX=True)
         content = response.content.decode(charset)
-        self.assertHTMLEqual('<a href="/unpjax/?{0}&_pjax=true">{1}</a>'.format(self.param_encoded, self.param), content)
+        self.assertHTMLEqual('<a href="/unpjax/?{0}&_pjax=true">{1}</a>'.format(
+            self.param_encoded, self.param), content)
 
     def test_with_middleware(self):
         MIDDLEWARE_CLASSES = list(settings.MIDDLEWARE_CLASSES) + ["easy_pjax.middleware.UnpjaxMiddleware"]
