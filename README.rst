@@ -6,16 +6,16 @@ Enhance the browsing experience of Django sites.
 .. image:: https://secure.travis-ci.org/nigma/django-easy-pjax.svg?branch=master
     :target: https://secure.travis-ci.org/nigma/django-easy-pjax
     :alt: Build Status
-.. image:: https://img.shields.io/pypi/v/django-cms.svg
+.. image:: https://img.shields.io/pypi/v/django-easy-pjax.svg
     :target: https://pypi.python.org/pypi/django-easy-pjax/
     :alt: Latest Version
-.. image:: https://img.shields.io/pypi/dm/django-cms.svg
+.. image:: https://img.shields.io/pypi/dm/django-easy-pjax.svg
     :target: https://pypi.python.org/pypi/django-easy-pjax/
     :alt: Downloads
 .. image:: https://img.shields.io/badge/wheel-yes-green.svg
     :target: https://pypi.python.org/pypi/django-easy-pjax/
     :alt: Wheel
-.. image:: https://img.shields.io/pypi/l/django-cms.svg
+.. image:: https://img.shields.io/pypi/l/django-easy-pjax.svg
     :target: https://pypi.python.org/pypi/django-easy-pjax/
     :alt: License
 
