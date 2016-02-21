@@ -44,7 +44,9 @@ add ``easy_pjax`` to your ``INSTALLED APPS`` and make sure you have
 
 If you are using Django 1.9+, you will also need to add the
 ``easy_pjax.templatetags.pjax_tags`` to template ``builtins`` in your
-Django settings::
+Django settings:
+
+.. code-block:: python
 
     TEMPLATES=[
         {
@@ -109,6 +111,52 @@ The full documentation is at `django-easy-pjax.rtfd.org <http://django-easy-pjax
 A live demo is at `easy-pjax.herokuapp.com <https://easy-pjax.herokuapp.com/>`_.
 You can run it locally after installing dependencies by running ``python demo.py``
 script from the cloned repository.
+
+Django 1.9
+----------
+
+Before Django 1.9 the ``easy-pjax`` library used the ``django.template.base.add_to_builtins``
+private API to automatically register itself in the template built-ins after it was added
+to the ``INSTALLED_APPS`` list.
+This workaround was due to the fact that the ``{% load  %}`` tag cannot be placed before
+the ``{% extends %}`` tag and the ``pjax`` template filter could not be loaded explicitly.
+
+Starting from Django 1.9 ``easy-pjax`` does not have to rely on such workarounds because
+Django now provides a clean way to add filters and tags to template
+`built-ins <https://docs.djangoproject.com/es/1.9/topics/templates/#module-django.template.backends.django>`_.
+This is now the recommended and the only way of installing ``easy-pjax`` template tags, also because the
+`add_to_builtins API was removed <https://docs.djangoproject.com/en/1.9/releases/1.9/#django-template-base-add-to-builtins-is-removed>`_.
+
+This is a backward incompatible change, but one that makes the integration more explicit and
+following the Zen of Python.
+
+Example of configuration settings to be used starting from Django 1.9:
+
+.. code-block:: python
+
+    INSTALLED_APPS = [
+        "easy_pjax"
+    ]
+    MIDDLEWARE_CLASSES = [
+        "easy_pjax.middleware.UnpjaxMiddleware"
+    ]
+    TEMPLATES = [
+        {
+            "BACKEND": "django.template.backends.django.DjangoTemplates",
+            "DIRS": [],
+            "APP_DIRS": True,
+            "OPTIONS": {
+                "builtins": [
+                    "easy_pjax.templatetags.pjax_tags"
+                ],
+                "context_processors": [
+                    "django.template.context_processors.request",
+                ]
+            }
+        }
+    ]
+
+No changes are required for Django 1.8 or older.
 
 License
 -------
