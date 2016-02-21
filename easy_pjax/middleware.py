@@ -3,6 +3,7 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 from django.http import QueryDict
+from django.utils.encoding import smart_str
 
 
 class UnpjaxMiddleware(object):
@@ -15,4 +16,4 @@ class UnpjaxMiddleware(object):
             qs = QueryDict(request.META.get("QUERY_STRING", ""),
                            encoding=request.encoding, mutable=True)
             qs.pop("_pjax", None)
-            request.META["QUERY_STRING"] = qs.urlencode()
+            request.META["QUERY_STRING"] = smart_str(qs.urlencode())
