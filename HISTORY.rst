@@ -3,6 +3,11 @@
 History
 -------
 
+1.3.0 (2016-02-20)
+++++++++++++++++++
+
+* Django 1.9 support (the plugin should be added to ``TEMPLATES["OPTIONS"]["builtins"]`` settings)
+
 1.2.0 (2015-04-23)
 ++++++++++++++++++
 
