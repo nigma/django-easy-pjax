@@ -4,9 +4,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 from django import template
 from django.http import QueryDict
-
-# Note: this file is automatically added to Django template builtins
-# by the easy_pjax.__init__ module.
+from django.utils.encoding import smart_str
 
 register = template.Library()
 
@@ -53,7 +51,7 @@ def unpjax(url):
     if "?" in url:
         base, qs = url.split("?", 1)
         if "_pjax" in qs:
-            qs = QueryDict(qs, mutable=True)
+            qs = QueryDict(smart_str(qs), mutable=True)
             qs.pop("_pjax", None)
             qs = qs.urlencode()
             if qs:
