@@ -37,13 +37,14 @@ The ``django-easy-pjax`` app is a helper that makes it easy to integrate
 Quick Start
 -----------
 
-(Note: the following instructions are for Django 1.8+)
-
 First include ``django-easy-pjax==1.3`` in your ``requirements.txt`` file,
-add ``easy_pjax`` to your ``INSTALLED APPS``.
-Then make sure that you have ``easy_pjax.templatetags.pjax_tags`` added to ``builtins``
-and ``django.template.context_processors.request`` added to ``context_processors``
-in your Django templates settings::
+add ``easy_pjax`` to your ``INSTALLED APPS`` and make sure you have
+``django.template.context_processors.request`` added to template
+``context_processors``.
+
+If you are using Django 1.9+, you will also need to add the
+``easy_pjax.templatetags.pjax_tags`` to template ``builtins`` in your
+Django settings::
 
     TEMPLATES=[
         {
