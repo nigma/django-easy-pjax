@@ -3,10 +3,12 @@
 History
 -------
 
-1.3.0 (2016-02-20)
+1.3.0 (2016-02-21)
 ++++++++++++++++++
 
-* Django 1.9 support (the plugin should be added to ``TEMPLATES["OPTIONS"]["builtins"]`` settings)
+* Django 1.9 support (the plugin should be added to ``TEMPLATES["OPTIONS"]["builtins"]``
+  settings) - `#13 <https://github.com/nigma/django-easy-pjax/pull/13>`_
+* Fix handling of non-ascii query strings on Python 2.7 - `#14 <https://github.com/nigma/django-easy-pjax/pull/13>`_
 
 1.2.0 (2015-04-23)
 ++++++++++++++++++
