@@ -15,17 +15,17 @@ class UnpjaxMiddlewareTestCase(TestCase):
         self.param_encoded = urlencode({"param": self.param})
 
     def test_without_middleware(self):
-        response = self.client.get("/unpjax/?{}".format(self.param_encoded))
+        response = self.client.get("/unpjax/?{0}".format(self.param_encoded))
         charset = response._charset
 
         if charset is None:
             charset = 'UTF-8'
         content = response.content.decode(charset)
-        self.assertHTMLEqual('<a href="/unpjax/?{}">{}</a>'.format(self.param_encoded, self.param), content)
+        self.assertHTMLEqual('<a href="/unpjax/?{0}">{1}</a>'.format(self.param_encoded, self.param), content)
 
-        response = self.client.get("/unpjax/?{}&_pjax=true".format(self.param_encoded), HTTP_X_PJAX=True)
+        response = self.client.get("/unpjax/?{0}&_pjax=true".format(self.param_encoded), HTTP_X_PJAX=True)
         content = response.content.decode(charset)
-        self.assertHTMLEqual('<a href="/unpjax/?{}&_pjax=true">{}</a>'.format(self.param_encoded, self.param), content)
+        self.assertHTMLEqual('<a href="/unpjax/?{0}&_pjax=true">{1}</a>'.format(self.param_encoded, self.param), content)
 
     def test_with_middleware(self):
         MIDDLEWARE_CLASSES = list(settings.MIDDLEWARE_CLASSES) + ["easy_pjax.middleware.UnpjaxMiddleware"]
@@ -33,18 +33,18 @@ class UnpjaxMiddlewareTestCase(TestCase):
         with self.settings(MIDDLEWARE_CLASSES=MIDDLEWARE_CLASSES):
             client = Client()
 
-            response = client.get("/unpjax/?{}".format(self.param_encoded))
+            response = client.get("/unpjax/?{0}".format(self.param_encoded))
             charset = response._charset
 
             if charset is None:
                 charset = 'UTF-8'
 
             content = response.content.decode(charset)
-            self.assertHTMLEqual('<a href="/unpjax/?{}">{}</a>'.format(self.param_encoded, self.param), content)
+            self.assertHTMLEqual('<a href="/unpjax/?{0}">{1}</a>'.format(self.param_encoded, self.param), content)
 
-            response = client.get("/unpjax/?{}&_pjax=true".format(self.param_encoded), HTTP_X_PJAX=True)
+            response = client.get("/unpjax/?{0}&_pjax=true".format(self.param_encoded), HTTP_X_PJAX=True)
             content = response.content.decode(charset)
-            self.assertHTMLEqual('<a href="/unpjax/?{}">{}</a>'.format(self.param_encoded, self.param), content)
+            self.assertHTMLEqual('<a href="/unpjax/?{0}">{1}</a>'.format(self.param_encoded, self.param), content)
 
 
 class UnpjaxMiddlewareNonAsciiTestCase(UnpjaxMiddlewareTestCase):
@@ -61,24 +61,24 @@ class UnpjaxFilterTestCase(TestCase):
         self.param_encoded = urlencode({"param": self.param})
 
     def test_regular_request(self):
-        response = self.client.get("/unpjax-filter/?{}".format(self.param_encoded))
+        response = self.client.get("/unpjax-filter/?{0}".format(self.param_encoded))
         charset = response._charset
 
         if charset is None:
             charset = 'UTF-8'
 
         content = response.content.decode(charset)
-        self.assertHTMLEqual('<a href="/unpjax-filter/?{}">{}</a>'.format(self.param_encoded, self.param), content)
+        self.assertHTMLEqual('<a href="/unpjax-filter/?{0}">{1}</a>'.format(self.param_encoded, self.param), content)
 
     def test_pjax_request(self):
-        response = self.client.get("/unpjax-filter/?{}&_pjax=true".format(self.param_encoded), HTTP_X_PJAX=True)
+        response = self.client.get("/unpjax-filter/?{0}&_pjax=true".format(self.param_encoded), HTTP_X_PJAX=True)
         charset = response._charset
 
         if charset is None:
             charset = 'UTF-8'
 
         content = response.content.decode(charset)
-        self.assertHTMLEqual('<a href="/unpjax-filter/?{}">{}</a>'.format(self.param_encoded, self.param), content)
+        self.assertHTMLEqual('<a href="/unpjax-filter/?{0}">{1}</a>'.format(self.param_encoded, self.param), content)
 
 
 class UnpjaxFilterNonAsciiTestCase(UnpjaxFilterTestCase):
